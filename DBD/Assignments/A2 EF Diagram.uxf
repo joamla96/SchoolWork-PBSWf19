@@ -223,7 +223,7 @@ Controls</panel_attributes>
       <w>70</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>CPR_No</panel_attributes>
+    <panel_attributes>_CPR_No_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -410,7 +410,7 @@ Controls</panel_attributes>
       <w>60</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>No</panel_attributes>
+    <panel_attributes>_No_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
