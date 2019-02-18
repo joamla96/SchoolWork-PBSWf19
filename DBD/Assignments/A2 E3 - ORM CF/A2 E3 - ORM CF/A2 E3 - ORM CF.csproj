@@ -6,8 +6,4 @@
     <RootNamespace>A2_E3___ORM_CF</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
 </Project>
