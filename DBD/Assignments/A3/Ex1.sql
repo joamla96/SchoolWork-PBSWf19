@@ -75,7 +75,11 @@ SELECT DISTINCT D.DNumber
 FROM 
 	Department AS D
 	JOIN Dept_Locations AS L ON L.DNUmber = D.DNumber
-	WHERE L.DLocation != 'Houston'
+WHERE L.DLocation != 'Houston'
+
+SELECT P.PNumber, P.DNum
+	FROM Project as P
+	WHERE P.PLocation = 'Houston'
 
 -- EX J TODO
 -- List the last names of all department managers who have no dependents. 
