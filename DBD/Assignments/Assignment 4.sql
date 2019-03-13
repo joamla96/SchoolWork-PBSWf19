@@ -6,12 +6,13 @@ GO
 CREATE TRIGGER CheckProjectLocation ON Project
 	AFTER INSERT, UPDATE
 AS BEGIN
-	DECLARE @projectLocation NVARCHAR(max);
-	DECLARE @departmentId INT;
-	DECLARE @departmentLocation NVARCHAR(max);
+	DECLARE 
+		@projectLocation NVARCHAR(max),
+		@departmentId INT,
+		@departmentLocation NVARCHAR(max);
 		 
-	SELECT TOP 1 PLocation = @projectLocation, Dnum = @departmentId FROM inserted;
-	SELECT @departmentLocation = DLocation  FROM Dept_Locations WHERE DNUmber = @departmentId
+	SELECT TOP 1 @projectLocation = PLocation, @departmentId = Dnum FROM inserted;
+	SELECT @departmentLocation = DLocation FROM Dept_Locations WHERE DNUmber = @departmentId
 
 	IF (@departmentLocation != @projectLocation)
 		BEGIN
@@ -25,12 +26,13 @@ GO
 CREATE TRIGGER ValidateEmlpoyeeSalary ON Employee
 	AFTER INSERT, UPDATE
 AS BEGIN
-	DECLARE @newSalary MONEY;
-	DECLARE @superSSN NUMERIC(9,0);
-	DECLARE @superSalary MONEY;
+	DECLARE 
+		@newSalary MONEY,
+		@superSSN NUMERIC(9,0),
+		@superSalary MONEY;
 
-	SELECT TOP 1 Salary = @newSalary, SuperSSN = @superSSN FROM inserted;
-	SELECT Salary = @superSalary FROM Employee WHERE SSN = @superSSN;
+	SELECT TOP 1 @newSalary = Salary, @superSSN = SuperSSN FROM inserted;
+	SELECT @superSalary = Salary FROM Employee WHERE SSN = @superSSN;
 
 	IF(@newSalary > (@superSalary * 0.9))
 		BEGIN
@@ -45,16 +47,17 @@ GO
 CREATE TRIGGER NewSupervisor ON Department
 	AFTER UPDATE
 AS BEGIN
-	DECLARE @newSuperSSN NUMERIC(9,0);
-	DECLARE @departmentId INT;
+	DECLARE 
+		@newSuperSSN NUMERIC(9,0),
+		@departmentId INT;
 
-	SELECT TOP 1 MgrSSN = @newSuperSSN, DNumber = @departmentId FROM inserted;
+	SELECT TOP 1 @newSuperSSN = MgrSSN, @departmentId = DNumber FROM inserted;
 	UPDATE Employee SET SuperSSN = @newSuperSSN WHERE Dno = @departmentId;
 END
 
 -- Ex 4
 GO
-CREATE FUNCTION usp_getEmployeeProjects(@SSN NUMERIC(9,0))
+CREATE FUNCTION udf_getEmployeeProjects(@SSN NUMERIC(9,0))
 	RETURNS TABLE
 AS RETURN
 	SELECT Pnumber, Pname, Dname, Plocation, Hours
@@ -65,7 +68,11 @@ AS RETURN
 
 -- Ex 5
 GO
-CREATE FUNCTION usp_NumberOfEmployees(@DepartmentName NVARCHAR(max))
+CREATE FUNCTION udf_NumberOfEmployees(@DepartmentName NVARCHAR(max))
 	RETURNS TABLE
 AS RETURN
 	SELECT COUNT(*) AS Number FROM Employee WHERE Dno = (SELECT DNumber FROM Department WHERE Dname LIKE CONCAT('%', @DepartmentName, '%'))
+
+
+-- Ex 6
+GO
