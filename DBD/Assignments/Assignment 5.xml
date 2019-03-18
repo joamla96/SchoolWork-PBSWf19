@@ -1,0 +1,40 @@
+<?xml version="1.0" standalone="yes" ?>
+<!DOCTYPE education [
+  <!ELEMENT name (#PCDATA)>
+  <!ELEMENT address (#PCDATA)>
+  <!ELEMENT phone (#PCDATA)>
+  <!ELEMENT email (#PCDATA)>
+
+  <!ATTLIST class id ID #REQUIRED>
+  <!ATTLIST student id ID #REQUIRED>
+  <!ATTLIST student class IDREF #REQUIRED>
+]>
+
+<education>
+  <classes>
+    <class id="PBSWF19_3" />
+  </classes>
+
+  <students>
+    <student id="s1" class="PBSWF19_3">
+      <name>Jonas</name>
+      <address>Street 88, 6700 Esbjeg</address>
+      <phone>12344556</phone>
+      <email>23dsasx@privacy.org</email>
+    </student>
+
+    <student id="s2" class="PBSWF19_3">
+      <name>Niels</name>
+      <address>Nostreet 12, 5000 Odense</address>
+      <phone>6543212</phone>
+      <email>tfq3331@privacy.org</email>
+    </student>
+
+    <student id="s3" class="PBSWF19_3">
+      <name>Patrick</name>
+      <address>Clostoschool 44, 6700 Esbjeg</address>
+      <phone>6543212</phone>
+      <email>tfq3331@privacy.org</email>
+    </student>
+  </students>
+</education>
