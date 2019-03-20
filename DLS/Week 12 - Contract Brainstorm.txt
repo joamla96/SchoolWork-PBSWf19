@@ -19,3 +19,18 @@ pro..
 Ownership of source-code
 Maintenance and Support
 Technologies / platform
+
+
+== Contract ToC
+= Legal Stuff
+ - whom is whom
+ - payment
+ - what ifs
+ - testing, when and how
+
+= Component / Deliverable
+ - platform
+ - context
+ - functional specification
+ - unit tests [optional]
+ - namespace requirements [optional]
