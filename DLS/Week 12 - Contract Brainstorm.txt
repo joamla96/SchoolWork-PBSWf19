@@ -1,4 +1,14 @@
 Requirements
+ - functional specification
+	e.g. interface level with english description
+	As specific as possible, without doing actual code
+ - Unit Tests
+	Great way to tell exactly what you need.
+	Gives sub-contractor examples to test against.
+	Problem => Only examples.
+ - Data Model (conceptual)
+ - Background & Context
+	
 Time of Delivery
 Payment
 Who-is-who
